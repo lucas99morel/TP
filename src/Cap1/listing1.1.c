@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "listing1.3.hpp" //reciprocal.hpp
 
 int main(int argc, char **argv){
