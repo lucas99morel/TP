@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <unistd.h>
 
 typedef int temp_file_handle;
@@ -27,4 +28,8 @@ char* read_temp_file(temp_file_handle temp_file, size_t* lenght){
     read(fd,lenght,sizeof(*lenght));
     close(fd);
     return buffer;
+}
+
+int main(){
+    return 0;
 }
