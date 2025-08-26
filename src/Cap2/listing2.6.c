@@ -34,3 +34,7 @@ char* read_from_file(const char* filename, size_t lenght){
     close(fd);
     return buffer;
 }
+
+int main(){
+    return 0;
+}
