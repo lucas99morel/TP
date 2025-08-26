@@ -19,11 +19,6 @@ $(EXES_cap1): $(OBJS_cap1)
 
 ######################	Cap 2	######################
 SRCS_cap2 := $(wildcard src/Cap2/*.c)
-
-OBJS_cap2 := $(SRCS_cap2:.c=.o)
-OBJS_cap2 := $(patsubst src/%.o,bin/%.o,$(OBJS_cap2))
-.INTERMEDIATE: $(OBJS_cap2)
-
 Cap2 := $(patsubst src/Cap2/%,%,$(SRCS_cap2))
 
 cap2: $(Cap2)
