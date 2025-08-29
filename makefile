@@ -1,6 +1,6 @@
 .PHONY: all clear
 .SILENT:
-all: cap1 cap2 cap3 #make all
+all: cap1 cap2 cap3 cap4 #make all
 
 ######################	Cap 1	######################
 SRCS_cap1 := $(wildcard src/Cap1/*.c src/Cap1/*.cpp)
@@ -49,8 +49,21 @@ listing3.%: bin/Cap3/listing3.%.o
 	exe_name=$$(basename $< .o); \
 	gcc $< -o $(dir $<)/$$exe_name
 
-######################	ReglasGenerales	######################
+######################	Cap 4	######################
+SRCS_cap4 := $(wildcard src/Cap4/*.c src/Cap4/*.cpp)
+Cap4 := $(patsubst src/Cap4/%.c,%,$(SRCS_cap4))
+Cap4 := $(patsubst src/Cap4/%.cpp,%,$(Cap4))
 
+cap4: $(Cap4)
+
+listing4.%: bin/Cap4/listing4.%.o
+	exe_name=$$(basename $< .o); \
+	if [ "$@" != "listing4.9" ]; then \
+		gcc $< -o $(dir $<)/$$exe_name; \
+	else \
+		g++ $< -o $(dir $<)/$$exe_name; \
+	fi
+######################	ReglasGenerales	######################
 bin/%.o: src/%.c
 	@mkdir -p $(dir $@)
 	gcc -c $< -o $@
