@@ -1,6 +1,6 @@
 .PHONY: all clear
 .SILENT:
-all: cap1 cap2 cap3 cap4 #make all
+all: cap1 cap2 cap3 cap4 cap5 #make all
 
 ######################	Cap 1	######################
 SRCS_cap1 := $(wildcard src/Cap1/*.c src/Cap1/*.cpp)
@@ -63,6 +63,17 @@ listing4.%: bin/Cap4/listing4.%.o
 	else \
 		g++ $< -o $(dir $<)/$$exe_name; \
 	fi
+
+######################	Cap 5ma	######################
+SRCS_cap5 := $(wildcard src/Cap5/*.c)
+Cap5 := $(patsubst src/Cap5/%.c,%,$(SRCS_cap5))
+
+cap5: $(Cap5)
+
+listing5.%: bin/Cap5/listing5.%.o
+	exe_name=$$(basename $< .o); \
+	gcc $< -o $(dir $<)/$$exe_name
+
 ######################	ReglasGenerales	######################
 bin/%.o: src/%.c
 	@mkdir -p $(dir $@)
