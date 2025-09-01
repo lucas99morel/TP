@@ -44,6 +44,14 @@ void enqueue_job(/* Pass job-specific data here... */){
     pthread_mutex_unlock (&job_queue_mutex);
 }
 
-int main(){
+int main() {
+    initialize_job_queue();
+
+    pthread_t t;
+    pthread_create(&t, NULL, thread_function, NULL);
+
+    enqueue_job();
+    
+    pthread_join(t, NULL);
     return 0;
 }
