@@ -2,11 +2,11 @@
 #include <pthread.h>
 
 void* allocate_buffer (size_t size){
-    return malloc (size);
+    return malloc(size);
 }
 
 void deallocate_buffer (void* buffer){
-    free (buffer);
+    free(buffer);
 }
 
 void do_some_work (){
@@ -17,6 +17,9 @@ void do_some_work (){
     pthread_cleanup_pop (1);
 }
 
-int main(){
+#include <pthread.h>
+
+int main() {
+    do_some_work();
     return 0;
 }
