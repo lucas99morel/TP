@@ -40,6 +40,9 @@ void* thread_function(void* arg){
     return NULL;
 }
 
-int main(){
+int main() {
+    pthread_t t;
+    pthread_create(&t, NULL, thread_function, NULL);
+    pthread_join(t, NULL);
     return 0;
 }
