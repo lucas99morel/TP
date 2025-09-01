@@ -41,6 +41,11 @@ void* thread_function(void*){
     return NULL;
 }
 
-int main(){
+#include <pthread.h>
+
+int main() {
+    pthread_t t;
+    pthread_create(&t, nullptr, thread_function, nullptr);
+    pthread_join(t, nullptr);
     return 0;
 }
