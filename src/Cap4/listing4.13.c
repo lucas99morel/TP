@@ -31,6 +31,14 @@ void set_thread_flag(int flag_value){
     pthread_mutex_unlock(&thread_flag_mutex);
 }
 
-int main(){
+int main() {
+    initialize_flag();
+
+    pthread_t t;
+    pthread_create(&t, NULL, thread_function, NULL);
+
+    set_thread_flag(1);
+
+    pthread_join(t, NULL);
     return 0;
 }
